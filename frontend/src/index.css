@@ -1,0 +1,526 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* =========================================
+   1. GLOBAL DESIGN SYSTEM
+========================================= */
+
+:root {
+  --bg-primary: #080d19;
+  --bg-secondary: #0d1727;
+  --bg-card: #101a2b;
+
+  --cyan: #22d3ee;
+  --blue: #3b82f6;
+  --violet: #a78bfa;
+  --emerald: #34d399;
+
+  --text-primary: #eafaff;
+  --text-secondary: #94a3b8;
+
+  --border-glow: rgba(34, 211, 238, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.7px;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* =========================================
+   2. SELECTION AND SCROLLBAR
+========================================= */
+
+::selection {
+  background: rgba(0, 229, 255, 0.3);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080d19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #155e75;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+/* =========================================
+   3. ANIMATED BACKGROUND EFFECTS
+========================================= */
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #080d19, #0d1b30, #101a35, #080d19);
+
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: orbFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(20px, -25px, 0) scale(1.12);
+  }
+
+  100% {
+    transform: translate3d(-15px, 15px, 0) scale(0.95);
+  }
+}
+
+/* =========================================
+   4. GLOW EFFECTS
+========================================= */
+
+.cyan-glow {
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.cyan-glow-strong {
+  box-shadow:
+    0 0 12px rgba(34, 211, 238, 0.3),
+    0 0 30px rgba(34, 211, 238, 0.15);
+}
+
+.text-glow {
+  text-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.glow-border {
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glow-border:hover {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.1);
+}
+
+/* =========================================
+   5. GLASSMORPHISM
+========================================= */
+
+.glass-panel {
+  background: rgba(16, 26, 43, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-cyan {
+  background: rgba(34, 211, 238, 0.06);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+/* =========================================
+   6. PAGE ENTRANCE ANIMATIONS
+========================================= */
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slideRight 0.6s ease both;
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease both;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Staggered entrance delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* =========================================
+   7. FLOATING ANIMATION
+========================================= */
+
+.animate-float {
+  animation: floating 5s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =========================================
+   8. PULSE AND STATUS ANIMATIONS
+========================================= */
+
+.animate-glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 15px rgba(34, 211, 238, 0.35),
+      0 0 30px rgba(34, 211, 238, 0.12);
+  }
+}
+
+.status-pulse {
+  position: relative;
+}
+
+.status-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  border-radius: inherit;
+  animation: statusRipple 2s ease-out infinite;
+}
+
+@keyframes statusRipple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   9. CARD INTERACTIONS
+========================================= */
+
+.animated-card {
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.animated-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 229, 255, 0.08);
+}
+
+/* =========================================
+   10. BUTTON ANIMATIONS
+========================================= */
+
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.18);
+}
+
+.animated-button:active {
+  transform: scale(0.97);
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.animated-button:hover::before {
+  left: 140%;
+}
+
+/* =========================================
+   11. CHAT ANIMATIONS
+========================================= */
+
+.chat-message {
+  animation: messageEnter 0.4s ease both;
+}
+
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22d3ee;
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingBounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   12. SHIMMER EFFECT
+========================================= */
+
+.animate-shimmer {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(34, 211, 238, 0.12) 40%,
+    rgba(255, 255, 255, 0.02) 60%
+  );
+
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================================
+   13. INPUT INTERACTIONS
+========================================= */
+
+.animated-input {
+  transition: all 0.3s ease;
+}
+
+.animated-input:focus {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.08);
+}
+
+/* =========================================
+   14. PAGE TRANSITIONS
+========================================= */
+
+main {
+  animation: pageEnter 0.45s ease both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0.75;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   15. ACCESSIBILITY AND PERFORMANCE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .animated-card:hover {
+    transform: none;
+  }
+}

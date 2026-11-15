@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pymongo
+python-dotenv
+python-multipart
+pymongo
+pwdlib[argon2]
+PyJWT
+email-validator
